@@ -1,10 +1,10 @@
 /**
- * @brief       Reads the load file
+ * @brief       It implements the game reader interpreter
  *
- * @file        player.c
+ * @file        game_reader.h
  * @authors     Adrian Caballero Orasio, Miguel Díaz Martín
  */
-
+ 
 #ifndef GAME_READER_H
 #define GAME_READER_H
 
@@ -12,7 +12,6 @@
 #include "space.h"
 #include "game.h"
 
-/*Lee el fichero para cargar el juego*/
 STATUS game_load_spaces(Game* game, char* filename);
 
 

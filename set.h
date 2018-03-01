@@ -31,8 +31,6 @@ STATUS set_del_id(Set *set, Id id);
 /*Imprime datos del set*/
 STATUS set_print(Set *set);
 
-Id set_get_id(Set *set, int n);
-
 
 
 #endif /* SET_H */

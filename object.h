@@ -1,7 +1,7 @@
 /**
- * @brief       It implements the object interpreter
+ * @brief       It defines the game interface for each command
  *
- * @file        player.c
+ * @file        object.h
  * @authors     Adrian Caballero Orasio, Miguel Díaz Martín
  */
 
@@ -13,7 +13,7 @@
 typedef struct _Object Object;
 
 /*Crea el objeto*/
-Object * object_create(Id id);
+Object *object_create(Id id);
 /*Destruye el objeto*/
 STATUS object_destroy(Object *obj);
 /*Establece el id del objeto*/
@@ -28,4 +28,3 @@ char *object_get_name(Object *obj);
 STATUS object_print(Object *obj);
 
 #endif /* OBJECT_H */
-

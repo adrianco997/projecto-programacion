@@ -19,10 +19,10 @@ struct _Dice {
 };
 
 
-Dice *dice_create(Id id){
+Dice *dice_create(){
   Dice *dice = NULL;
-
-  if (id == NO_ID) return NULL;
+  int id;
+  id = srand((int)time(NULL));
   dice = (Dice *) malloc(sizeof(Dice));
   if (dice == NULL) return NULL;
   dice->id = id;
@@ -39,7 +39,6 @@ STATUS dice_destroy(Dice *dice){
 int dice_roll(Dice *dice){
   int roll;
   if (!dice) return ERROR;
-  srand((int)time(NULL));
   roll = rand() % (dice_faces) + 1;
   dice->lastroll = roll;
   return roll;
