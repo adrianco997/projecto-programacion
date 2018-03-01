@@ -77,13 +77,6 @@ STATUS set_del_id(Set *set, Id id){
     return OK;
 }
 
-Id set_get_id(Set *set, int n){
-    if(!set)
-        return NO_ID;
-    
-    return set->datos[n];
-}
-
 STATUS set_print(Set *set){
     int i;
     

@@ -1,11 +1,11 @@
 /**
- * @brief It defines the game loop
+ * @brief       It defines the game loop
  *
- * @file game_loop.c
- * @author Profesores PPROG
- * @version 1.0
- * @date 13-01-2015
- * @copyright GNU Public License
+ * @file        game_loop.c
+ * @author      Profesores PPROG
+ * @version     1.0
+ * @date        13-01-2015
+ * @copyright   GNU Public License
  */
 
 #include <stdio.h>
@@ -16,6 +16,7 @@ int main(int argc, char *argv[]) {
     Game game;
     T_Command command = NO_CMD;
     Graphic_engine *gengine;
+
     if (argc < 2) {
         fprintf(stderr, "Use: %s <game_data_file>\n", argv[0]);
         return 1;

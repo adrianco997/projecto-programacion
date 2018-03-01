@@ -1,27 +1,19 @@
 /**
- * @brief It implements the command interpreter
+ * @brief       It implements the command interpreter
  *
- * @file command.h
- * @author Profesores PPROG
- * @version 1.0
- * @date 19-12-2014
- * @copyright GNU Public License
- */
+ * @file        command.h
+ * @author      Profesores PPROG
+ * @version     1.0
+ * @date        19-12-2014
+ * @copyright   GNU Public License
+**/
 
 #ifndef COMMAND_H
 #define COMMAND_H
 
-typedef enum enum_Command {
-    NO_CMD = -1,
-    UNKNOWN,
-    EXIT,
-    FOLLOWING,
-    PREVIOUS,
-    TAKE,
-    LEAVE
-} T_Command;
+typedef enum enum_Command {NO_CMD = -1, UNKNOWN, EXIT, FOLLOWING, PREVIOUS} T_Command;
 
-/*Lee la entrada del jugador*/
+/* lee el la entrada de texto y reconoce el tipo de imput escrito*/
 T_Command get_user_input();
 
-#endif
+ #endif  /* COMMAND_H */

@@ -1,4 +1,4 @@
- /**
+/**
  * @brief It implements the command interpreter
  *
  * @file command.c
@@ -13,11 +13,11 @@
 #include "command.h"
 
 #define CMD_LENGHT 30
-#define N_CMD 7
+#define N_CMD 5
 
 char
-*cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous", "Take", "Leave"};/*game loop - game update - game_calback...*/
-char *short_cmd_to_str[N_CMD] ={"", "", "e", "f", "p", "t", "l"};
+*cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous"};/*game loop - game update - game_calback...*/
+char *short_cmd_to_str[N_CMD] ={"", "", "e", "f", "p"};
 
 T_Command
 get_user_input() {

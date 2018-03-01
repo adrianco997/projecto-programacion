@@ -1,16 +1,14 @@
 /**
- * @brief       Reads the load file
+ * @brief       It implements the game reader interpreter
  *
- * @file        player.c
+ * @file        game_reader.c
  * @authors     Adrian Caballero Orasio, Miguel Díaz Martín
  */
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "game_reader.h"
 #include "game.h"
+#include "game_reader.h"
 
 STATUS game_load_spaces(Game* game, char* filename) {
     FILE* file = NULL;
@@ -21,15 +19,9 @@ STATUS game_load_spaces(Game* game, char* filename) {
     Space* space = NULL;
     STATUS status = OK;
 
-    if (!filename) {
-        return ERROR;
-    }
-
+    if (!filename || game) return ERROR;
     file = fopen(filename, "r");
-    if (file == NULL) {
-        return ERROR;
-    }
-
+    if (!file) return ERROR;
     while (fgets(line, WORD_SIZE, file)) {
         if (strncmp("#s:", line, 3) == 0) {
             toks = strtok(line + 3, "|");
@@ -48,7 +40,7 @@ STATUS game_load_spaces(Game* game, char* filename) {
             printf("Leido: %ld|%s|%ld|%ld|%ld|%ld\n", id, name, north, east, south, west);
 #endif
             space = space_create(id);
-            if (space != NULL) {
+            if (space) {
                 space_set_name(space, name);
                 space_set_north(space, north);
                 space_set_east(space, east);
@@ -58,12 +50,9 @@ STATUS game_load_spaces(Game* game, char* filename) {
             }
         }
     }
-
     if (ferror(file)) {
         status = ERROR;
     }
-
     fclose(file);
-
     return status;
 }

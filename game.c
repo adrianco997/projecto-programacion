@@ -15,7 +15,7 @@
 #include "game.h"
 #include "game_reader.h"
 
-#define N_CALLBACK 6
+#define N_CALLBACK 4
 
 /**
    Define the function type for the callbacks
@@ -29,16 +29,12 @@ void game_callback_unknown(Game* game);
 void game_callback_exit(Game* game);
 void game_callback_following(Game* game);
 void game_callback_previous(Game* game);
-void game_callback_take(Game* game);
-void game_callback_leave(Game* game);
 
 static callback_fn game_callback_fn_list[N_CALLBACK] = {
     game_callback_unknown,
     game_callback_exit,
     game_callback_following,
-    game_callback_previous,
-    game_callback_take,
-    game_callback_leave
+    game_callback_previous
 };
 
 /**
@@ -62,8 +58,8 @@ STATUS game_create(Game* game) {
         game->spaces[i] = NULL;
     }
 
-    game->player_location = player_create(NO_ID);
-    game->object_location = object_create(NO_ID);
+    game->player_location = NO_ID;
+    object_set_id(game->object_location, NO_ID);
     game->last_cmd = NO_CMD;
 
     return OK;
@@ -86,10 +82,6 @@ STATUS game_create_from_file(Game* game, char* filename) {
 STATUS game_destroy(Game* game) {
     int i = 0;
 
-    object_destroy(game->object_location);
-    
-    player_destroy(game->player_location);
-    
     for (i = 0; (i < MAX_SPACES) && (game->spaces[i] != NULL); i++) {
         space_destroy(game->spaces[i]);
     }
@@ -148,9 +140,7 @@ STATUS game_set_player_location(Game* game, Id id) {
         return ERROR;
     }
 
-    player_destroy(game->player_location);
-    
-    game->player_location = player_create(id);
+    game->player_location = id;
 
     return OK;
 
@@ -162,15 +152,13 @@ STATUS game_set_object_location(Game* game, Id id) {
         return ERROR;
     }
     
-    object_destroy(game->object_location);
-    
     game->object_location = object_create(id);
     
     return OK;
 }
 
 Id game_get_player_location(Game* game) {
-    return player_get_id(game->player_location);
+    return game->player_location;
 }
 
 Id game_get_object_location(Game* game) {
@@ -198,7 +186,7 @@ void game_print_data(Game* game) {
     }
 /*game->object_location->id*/
     printf("=> Object location: %d\n", (int) object_get_id(game->object_location));
-    printf("=> Player location: %d\n", (int) player_get_id(game->player_location));
+    printf("=> Player location: %d\n", (int) game->player_location);
     printf("prompt:> ");
 }
 
@@ -249,7 +237,6 @@ void game_callback_previous(Game* game) {
         return;
     }
 
-
     for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++) {
         current_id = space_get_id(game->spaces[i]);
         if (current_id == space_id) {
@@ -262,54 +249,4 @@ void game_callback_previous(Game* game) {
     }
 }
 
-void game_callback_take(Game* game){
-    int i;
-    Id current_id = NO_ID;
-    Id space_id = NO_ID;
-    
-    space_id = game_get_player_location(game);
-    
-    if (NO_ID == space_id) {
-        return;
-    }
-    
-    for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++) {
-        current_id = space_get_id(game->spaces[i]);
-        if (current_id == space_id) {
-            if (current_id != NO_ID) {
-                game_set_player_location(game, current_id);
-                object_set_id(player_get_object(game->player_location),game_get_object_location(game));
-                object_set_id(game->object_location, NO_ID);
-            }
-            return;
-        }
-    }
-     
-}
-
-void game_callback_leave(Game* game){
-    /*int i;
-    Id current_id = NO_ID;
-    Id space_id = NO_ID;
-    
-    space_id = game_get_player_location(game);
-   
-    if (NO_ID == space_id) {
-        return;
-    }
-    
-     for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++) {
-        current_id = space_get_id(game->spaces[i]);
-        if (current_id == space_id) {
-            current_id = object_get_id(space_get_object(player_get_space(game->player_location)));
-            if (current_id == NO_ID) {
-                game_set_player_location(game, current_id);
-                space_set_object(player_get_space(game->player_location), player_get_object(game->player_location));
-                object_set_id(player_get_object(game->player_location), NO_ID);
-            }
-            return;
-        }
-    }
-    */
-}
 
