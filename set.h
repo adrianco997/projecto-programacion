@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 /* 
  * File:   set.h
- * Author: miguel
+ * authors Adrian Caballero Orasio, Miguel Díaz Martín
  *
  * Created on February 19, 2018, 4:49 PM
  */
@@ -31,7 +27,8 @@ STATUS set_del_id(Set *set, Id id);
 /*Imprime datos del set*/
 STATUS set_print(Set *set);
 
+Id set_get_id(Set *set, int n);
+
 
 
 #endif /* SET_H */
-

@@ -21,8 +21,10 @@ struct _Dice {
 
 Dice *dice_create(){
   Dice *dice = NULL;
-  int id;
-  id = srand((int)time(NULL));
+  Id id = NO_ID;
+  srand((int)time(NULL));
+  id = rand();
+  if (id == NO_ID) return NULL;
   dice = (Dice *) malloc(sizeof(Dice));
   if (dice == NULL) return NULL;
   dice->id = id;
@@ -54,15 +56,11 @@ int dice_get_lastroll(Dice *dice){
 }
 
 STATUS dice_print(Dice *dice){
-
   Id aux = NO_ID;
 
   if (!dice) return ERROR;
-  fprintf(stdout, "--> Dice (Id: %ld; Last roll: %d)\n", dice->id, dice->lastroll);
   aux = dice_get_id(dice);
-  if (NO_ID != aux) fprintf(stdout, "---> Dice id: %ld.\n", aux);
+  if (NO_ID != aux) fprintf(stdout, "--> Dice (Id: %ld; Last roll: %d)\n", aux, dice->lastroll);
   else fprintf(stdout, "---> No id.\n");
   return OK;
-
-
 }

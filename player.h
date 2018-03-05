@@ -8,38 +8,33 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "types.h"
 #include "space.h"
 #include "object.h"
-#include "command.h"
-#include "game_reader.h"
-#include "game.h"
-#include "graphic_engine.h"
-#include "screen.h"
+#include "player.h"
 
 typedef struct _Player Player;
 
-/* Crea el jugador */
+/*Crea el jugador*/
 Player *player_create(Id id);
-/* Destruye el jugador */
+/*Destruye el jugador*/
 STATUS player_destroy(Player *player);
-
-/* Devuelven los datos del jugador */
+/*Devuelve el id del jugador*/
 Id player_get_id(Player *player);
+/*Devuelve el nombre del jugador*/
 const char *player_get_name(Player *player);
+/*Devuelve el espacio del jugador*/
 Space *player_get_space(Player *player);
+/*Devuelve el objeto del jugador*/
 Object *player_get_object(Player *player);
-
-/* Establece los datos del jugador */
+/*Establece el id del jugador*/
+STATUS player_set_id(Player *player, Id id);
+/*Establece el nombre del jugador*/
 STATUS player_set_name(Player *player, char *name);
+/*Establece el espacio del jugador*/
 STATUS player_set_space(Player *player, Space *space);
-STATUS player_set_object(Player *player, Object *object);
-
-/* el jugador coje o deja un objeto */
-STATUS player_grab_object(Player *player);
-STATUS player_drop_object(Player *player, Object *object);
-
-/* Imprime el contenido del jugador */
+/*Establece el objeto del jugador*/
+STATUS player_set_object(Player *player, Object *obj);
+/*Imprime datos del jugador*/
 STATUS player_print(Player *player);
 
 #endif  /* PLAYER_H */
