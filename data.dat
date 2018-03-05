@@ -1,14 +1,27 @@
-#s: 1|Casilla      1|-1|-1| 2|-1
-#s: 2|Casilla      2| 1|-1| 3|-1
-#s: 3|Casilla      3| 2|-1| 4|-1
-#s: 4|Casilla      4| 3|-1| 5|-1
-#s: 5|Casilla OCA  5| 4|-1| 6| 9
-#s: 6|Casilla      6| 5|-1| 7|-1
-#s: 7|Casilla      7| 6|-1| 8|-1
-#s: 8|Casilla      8| 7|-1| 9|-1
-#s: 9|Casilla OCA  9| 8| 5|10|-1
-#s:10|Casilla     10| 9|-1|11|-1
-#s:11|Casilla     11|10|-1|12|-1
-#s:12|Casilla     12|11|-1|-1|-1
-#s:13|Casilla NULA  |-1|-1|-1|-1
-#s:id|name          | N| W| S| E
+#s: 1|Casilla         1|-1|-1| 2|-1|       |       |       |
+#s: 2|Casilla         2| 1|-1| 3|-1|       |       |       |
+#s: 3|Casilla         3| 2|-1| 4|-1|       |       |       |
+#s: 4|Casilla         4| 3|-1| 5|-1|       |       |       |
+#s: 5|Casilla OCA     5| 4|-1| 6| 9|       |<O)__/ | \_-/  |
+#s: 6|Casilla         6| 5|-1| 7|-1|       |       |       |
+#s: 7|Casilla         7| 6|-1| 8|-1|       |       |       |
+#s: 8|Casilla         8| 7|-1| 9|-1|       |       |       |
+#s: 9|Casilla OCA     9| 8| 5|10|-1|       |<O)__/ | \_-/  |
+#s:10|Casilla        10| 9|-1|11| 5|       |       |       |
+#s:11|Casilla        11|10|-1|12|-1|       |       |       |
+#s:12|Casilla        12|11|-1|-1|-1|       |       |       |
+
+#o: 1|Objeto OCA      1| 5
+#o: 2|Objeto OCA      2| 9
+#o: 3|Objeto PUENTE   3|-1
+#o: 4|Objeto PUENTE   4|-1
+#o: 5|Objeto MUERTE   5|-1
+
+
+#s:97|EJEMPLO OCA    97|-1|-1|-1|-1|       |<O)__/ | \_-/  |
+#s:98|EJEMPLO PUENTE 98|-1|-1|-1|-1|       | / _ \ |/ / \ \|
+#s:99|EJEMPLO MUERTE 99|-1|-1|-1|-1|  ___  | (O O) |  \m/  |
+
+
+#s:Id|Nombre     numero| S| W| N| E|descrip|grafica|  3x7  |
+#o:Id|Nombre     numero|ID|
